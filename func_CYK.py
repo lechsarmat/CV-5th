@@ -97,7 +97,7 @@ def CYK(X, D = {}):
         S = np.maximum(S, np.amax(CYK(X[:,:j]) * CYK(X[:,j:]).T * P_h, axis = (1,2)).reshape((11,1)))
     for i in range(1,h):
         S = np.maximum(S, np.amax(CYK(X[:i]) * CYK(X[i:]).T * P_v, axis = (1,2)).reshape((11,1)))
-    D[str( X )] = np.maximum( S, np.amax( S * P_r[:, 2:].T, axis = 0 ).reshape( (11, 1) ) )
+    D[str( X )] = S
     return D[str( X )]
 
 def AnswerFilter(X):
